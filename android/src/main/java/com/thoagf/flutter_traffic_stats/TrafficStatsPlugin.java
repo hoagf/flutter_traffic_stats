@@ -2,15 +2,16 @@ package com.thoagf.flutter_traffic_stats;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.PluginRegistry;
 
 import android.content.Context;
-import android.net.TrafficStats;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
+import com.thoagf.flutter_traffic_stats.networt_stats.NetworkStats;
+import com.thoagf.flutter_traffic_stats.traffic_stats.DataUsedUtils;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
@@ -40,6 +41,19 @@ public class TrafficStatsPlugin implements FlutterPlugin, MethodChannel.MethodCa
             String timeNow =call.argument("timeNow");
             String lastTimPostData =call.argument("lastTimPostData");
             result.success(new Gson().toJson(DataUsedUtils.getInstance(context).getDataUsage(lastTimPostData, timeNow)));
+        }else if (call.method.equals("queryNetworkBuckets")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                long start = (long) call.argument("start");
+                long end = (long) call.argument("end");
+                int type = (int) call.argument("type");
+                result.success(new Gson().toJson(NetworkStats.INSTANCE.queryNetworkBuckets(context, start, end, type)));
+            }else{
+                result.error(
+                        "API Error",
+                        "Requires API Level 23",
+                        "Target should be set to 23 to use this API"
+                );
+            }
         } else {
             result.notImplemented();
         }

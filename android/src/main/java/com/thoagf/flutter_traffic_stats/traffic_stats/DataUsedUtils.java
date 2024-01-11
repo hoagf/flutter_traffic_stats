@@ -1,10 +1,12 @@
-package com.thoagf.flutter_traffic_stats;
+package com.thoagf.flutter_traffic_stats.traffic_stats;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.util.Log;
 
+import com.thoagf.flutter_traffic_stats.Constants;
+import com.thoagf.flutter_traffic_stats.MySharePref;
 import com.thoagf.flutter_traffic_stats.model.DataUsage;
 import com.thoagf.flutter_traffic_stats.model.DataUsageUpload;
 
@@ -61,6 +63,7 @@ public class DataUsedUtils {
         endTimeStr =  dateFormat.format(endTime);
 
         boolean isJustRestart = MySharePref.getInstance(context).get(Constants.IS_BOOT_COMPLETED, Integer.class) == 1;
+        Log.d("hhh", "IS_BOOT_COMPLETED: "+isJustRestart);
 
         for (int i = 0; i < packList.size(); i++) {
             DataUsage dataUsage;
@@ -126,6 +129,7 @@ public class DataUsedUtils {
                 upload.setData(objectMap.get(key));
                 dataUpload.add(upload);
             }
+            MySharePref.getInstance(context).put(Constants.IS_BOOT_COMPLETED, 0);
             return  dataUpload;
 
         }

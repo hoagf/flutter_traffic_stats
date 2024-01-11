@@ -1,4 +1,4 @@
-package com.thoagf.flutter_traffic_stats;
+package com.thoagf.flutter_traffic_stats.traffic_stats;
 
 import android.net.TrafficStats;
 
