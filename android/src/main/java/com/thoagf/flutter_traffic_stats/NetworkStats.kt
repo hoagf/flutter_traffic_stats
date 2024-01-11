@@ -1,4 +1,4 @@
-package com.thoagf.flutter_traffic_stats.networt_stats
+package com.thoagf.flutter_traffic_stats
 
 import android.annotation.SuppressLint
 import android.app.usage.NetworkStats
@@ -9,7 +9,6 @@ import android.content.pm.ApplicationInfo
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.telephony.TelephonyManager
-import android.util.Log
 import androidx.annotation.RequiresApi
 
 

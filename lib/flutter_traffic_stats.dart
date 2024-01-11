@@ -1,4 +1,6 @@
 library flutter_traffic_stats;
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
@@ -11,8 +13,8 @@ class TrafficStats {
         'lastTimPostData': DateFormat('yyyy/MM/dd HH:mm:ss').format(startDate),
         'timeNow': DateFormat('yyyy/MM/dd HH:mm:ss').format(endDate),
       };
-      dynamic events = await _channel.invokeMethod('getTrafficStats', argument);
-      return events;
+      String events = await _channel.invokeMethod('getTrafficStats', argument);
+      return jsonDecode(events);
     } on PlatformException catch (e) {
       return [];
     }
@@ -30,10 +32,10 @@ class TrafficStats {
       'end': end,
       'type': networkType.value,
     };
-    dynamic events =
+    String events =
     await _channel.invokeMethod('queryNetworkBuckets', interval);
     print(events);
-    return events;
+    return jsonDecode(events);
   }
 }
 
