@@ -10,6 +10,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
+import com.thoagf.Utils;
 import com.thoagf.flutter_traffic_stats.traffic_stats.DataUsedUtils;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -53,7 +54,11 @@ public class TrafficStatsPlugin implements FlutterPlugin, MethodChannel.MethodCa
                         "Target should be set to 23 to use this API"
                 );
             }
-        } else {
+        }else if(call.method.equals("isUsagePermission")){
+            result.success(Utils.isUsagePermission(context));
+        }else if(call.method.equals("grantUsagePermission")){
+            Utils.grantUsagePermission(context);
+        }else {
             result.notImplemented();
         }
     }

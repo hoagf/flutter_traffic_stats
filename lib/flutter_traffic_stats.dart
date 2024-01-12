@@ -7,6 +7,15 @@ import 'package:intl/intl.dart';
 class TrafficStats {
   static const MethodChannel _channel = const MethodChannel('traffic_stats');
 
+  static Future<bool?> checkUsagePermission() async {
+    bool? isPermission = await _channel.invokeMethod('isUsagePermission');
+    return isPermission;
+  }
+
+  static Future<void> grantUsagePermission() async {
+    await _channel.invokeMethod('grantUsagePermission');
+  }
+
   static Future<List<dynamic>> getTrafficStats(DateTime startDate, DateTime endDate) async {
     try {
       Map argument = {
