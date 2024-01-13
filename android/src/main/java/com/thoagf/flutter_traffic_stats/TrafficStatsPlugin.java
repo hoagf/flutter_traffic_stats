@@ -65,7 +65,6 @@ public class TrafficStatsPlugin implements FlutterPlugin, MethodChannel.MethodCa
         }
     }
 
-
     @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
         channel.setMethodCallHandler(null);

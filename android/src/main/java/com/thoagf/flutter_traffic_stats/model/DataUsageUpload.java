@@ -1,9 +1,16 @@
 package com.thoagf.flutter_traffic_stats.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class DataUsageUpload {
+    @SerializedName("packageName")
+    @Expose
     private String packageName;
+    @SerializedName("data")
+    @Expose
     private List<DataUsage> data;
 
     public DataUsageUpload(String packageName, List<DataUsage> data) {

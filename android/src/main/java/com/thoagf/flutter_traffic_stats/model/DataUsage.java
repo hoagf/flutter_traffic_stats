@@ -1,17 +1,44 @@
 package com.thoagf.flutter_traffic_stats.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class DataUsage {
+    @SerializedName("Id")
+    @Expose
     int Id;
+    @SerializedName("packageName")
+    @Expose
     String packageName;
+    @SerializedName("rxBytes")
+    @Expose
     long rxBytes;
+    @SerializedName("rawRxBytes")
+    @Expose
     long rawRxBytes;
+    @SerializedName("rxPackets")
+    @Expose
     long rxPackets;
+    @SerializedName("rawRxPackets")
+    @Expose
     long rawRxPackets;
+    @SerializedName("txBytes")
+    @Expose
     long txBytes;
+    @SerializedName("rawTxBytes")
+    @Expose
     long rawTxBytes;
+    @SerializedName("txPackets")
+    @Expose
     long txPackets;
+    @SerializedName("rawTxPackets")
+    @Expose
     long rawTxPackets;
+    @SerializedName("startTimeStamp")
+    @Expose
     String startTimeStamp;
+    @SerializedName("endTimeStamp")
+    @Expose
     String endTimeStamp;
 
     public DataUsage() {
