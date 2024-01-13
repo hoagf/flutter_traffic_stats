@@ -105,7 +105,6 @@ public class DataUsedUtils {
     private List<DataUsageUpload> postData() {
         List<DataUsageUpload> dataUpload = new ArrayList<>();
         List<DataUsage> listData = DataUsageRepository.getInstance(context).getValuesByStartTime(lastTimPostData);
-        Log.d("hhh", "listData: "+listData.size());
 
         if(!listData.isEmpty()){
             Map<String, List<DataUsage>> objectMap = new HashMap<>();
@@ -122,7 +121,6 @@ public class DataUsedUtils {
                     }
                 }
             }
-            Log.d("hhh", "objectMap.keySet():"+objectMap.keySet().size());
             for (String key : objectMap.keySet()) {
                 DataUsageUpload upload = new DataUsageUpload();
                 upload.setPackageName(key);
