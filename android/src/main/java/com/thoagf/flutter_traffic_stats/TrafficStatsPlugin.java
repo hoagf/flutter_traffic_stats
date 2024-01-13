@@ -40,7 +40,9 @@ public class TrafficStatsPlugin implements FlutterPlugin, MethodChannel.MethodCa
         if (call.method.equals("getTrafficStats")) {
             String timeNow =call.argument("timeNow");
             String lastTimPostData =call.argument("lastTimPostData");
-            result.success(new Gson().toJson(DataUsedUtils.getInstance(context).getDataUsage(lastTimPostData, timeNow)));
+            String hh = new Gson().toJson(DataUsedUtils.getInstance(context).getDataUsage(lastTimPostData, timeNow));
+            Log.d("hhh", "hh");
+            result.success(hh);
         }else if (call.method.equals("queryNetworkBuckets")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 long start = (long) call.argument("start");
