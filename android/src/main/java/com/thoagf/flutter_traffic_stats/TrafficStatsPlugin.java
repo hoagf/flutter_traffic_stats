@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.thoagf.Utils;
+import com.thoagf.flutter_traffic_stats.networt_stats.NetworkStatsJava;
 import com.thoagf.flutter_traffic_stats.traffic_stats.DataUsedUtils;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -41,7 +42,6 @@ public class TrafficStatsPlugin implements FlutterPlugin, MethodChannel.MethodCa
             String timeNow =call.argument("timeNow");
             String lastTimPostData =call.argument("lastTimPostData");
             String hh = new Gson().toJson(DataUsedUtils.getInstance(context).getDataUsage(lastTimPostData, timeNow));
-            Log.d("hhh", "HH:"+hh);
             result.success(hh);
         }else if (call.method.equals("queryNetworkBuckets")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

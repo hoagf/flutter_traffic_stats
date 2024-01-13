@@ -1,4 +1,4 @@
-package com.thoagf.flutter_traffic_stats;
+package com.thoagf.flutter_traffic_stats.networt_stats;
 
 import android.annotation.SuppressLint;
 import android.app.usage.NetworkStats;

@@ -204,7 +204,6 @@ public class DataUsageRepository {
     }
     public void addNewRecord(DataUsage dataUsage)
     {
-        Log.d("hhh", "insert: "+new Gson().toJson(dataUsage));
         ContentValues contentValues = new ContentValues();
         contentValues.put(PackageName, dataUsage.getPackageName());
         contentValues.put(RxBytes, dataUsage.getRxBytes());
