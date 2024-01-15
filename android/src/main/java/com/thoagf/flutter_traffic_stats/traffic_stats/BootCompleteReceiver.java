@@ -12,7 +12,6 @@ import com.thoagf.flutter_traffic_stats.MySharePref;
 public class BootCompleteReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("hhh", "BootCompleteReceiver onReceive");
         MySharePref.getInstance(context).put(Constants.IS_BOOT_COMPLETED,1);
     }
 }

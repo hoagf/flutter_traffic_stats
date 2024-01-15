@@ -10,7 +10,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
-import com.thoagf.Utils;
 import com.thoagf.flutter_traffic_stats.networt_stats.NetworkStatsJava;
 import com.thoagf.flutter_traffic_stats.traffic_stats.DataUsedUtils;
 

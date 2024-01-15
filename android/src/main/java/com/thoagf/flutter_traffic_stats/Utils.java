@@ -1,4 +1,4 @@
-package com.thoagf;
+package com.thoagf.flutter_traffic_stats;
 
 import android.app.AppOpsManager;
 import android.content.Context;
