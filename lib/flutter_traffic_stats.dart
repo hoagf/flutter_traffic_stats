@@ -7,15 +7,7 @@ import 'package:intl/intl.dart';
 class TrafficStats {
   static const MethodChannel _channel = const MethodChannel('traffic_stats');
 
-  static Future<bool?> checkUsagePermission() async {
-    bool? isPermission = await _channel.invokeMethod('isUsagePermission');
-    return isPermission;
-  }
-
-  static Future<void> grantUsagePermission() async {
-    await _channel.invokeMethod('grantUsagePermission');
-  }
-
+  //for android 4.4, use TrafficStats
   static Future<List<dynamic>> getTrafficStats(DateTime startDate, DateTime endDate) async {
     try {
       Map argument = {
@@ -29,6 +21,7 @@ class TrafficStats {
     }
   }
 
+//for android higher 4.4, use NetworkStatsManager
   static Future<List<dynamic>> queryNetworkBuckets(
       DateTime startDate,
       DateTime endDate, {
@@ -45,6 +38,14 @@ class TrafficStats {
     await _channel.invokeMethod('queryNetworkBuckets', interval);
     print(events);
     return jsonDecode(events);
+  }
+  static Future<bool?> checkUsagePermission() async {
+    bool? isPermission = await _channel.invokeMethod('isUsagePermission');
+    return isPermission;
+  }
+
+  static Future<void> grantUsagePermission() async {
+    await _channel.invokeMethod('grantUsagePermission');
   }
 }
 

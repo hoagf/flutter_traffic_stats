@@ -10,7 +10,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
-import com.thoagf.flutter_traffic_stats.networt_stats.NetworkStatsJava;
+import com.thoagf.flutter_traffic_stats.networt_stats.NetworkStats;
 import com.thoagf.flutter_traffic_stats.traffic_stats.DataUsedUtils;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -47,7 +47,7 @@ public class TrafficStatsPlugin implements FlutterPlugin, MethodChannel.MethodCa
                 long start = (long) call.argument("start");
                 long end = (long) call.argument("end");
                 int type = (int) call.argument("type");
-                result.success(new Gson().toJson(NetworkStatsJava.queryNetworkBuckets(context, start, end, type)));
+                result.success(new Gson().toJson(NetworkStats.queryNetworkBuckets(context, start, end, type)));
             }else{
                 result.error(
                         "API Error",

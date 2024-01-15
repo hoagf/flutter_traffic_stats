@@ -1,7 +1,6 @@
 package com.thoagf.flutter_traffic_stats.networt_stats;
 
 import android.annotation.SuppressLint;
-import android.app.usage.NetworkStats;
 import android.app.usage.NetworkStats.Bucket;
 import android.app.usage.NetworkStatsManager;
 import android.content.Context;
@@ -17,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class NetworkStatsJava {
+public class NetworkStats {
     @SuppressLint({"MissingPermission", "HardwareIds"})
     private static String getSubscriberId(Context context) {
         try {
@@ -82,7 +81,7 @@ public class NetworkStatsJava {
     private static List<Bucket> getNetworkBuckets(int networkType, NetworkStatsManager networkStatsManager, long startDate, long endDate, String subscriberID, ApplicationInfo info) {
         try {
             List<Bucket> result = new ArrayList<>();
-            NetworkStats queryDetailsForUid = networkStatsManager.queryDetailsForUid(networkType, subscriberID, startDate, endDate, info.uid);
+            android.app.usage.NetworkStats queryDetailsForUid = networkStatsManager.queryDetailsForUid(networkType, subscriberID, startDate, endDate, info.uid);
             while (queryDetailsForUid.hasNextBucket()) {
                 Bucket tmpBucket = new Bucket();
                 queryDetailsForUid.getNextBucket(tmpBucket);
